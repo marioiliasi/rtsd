@@ -1,0 +1,5 @@
+cluster.name: "es-test"
+discovery.type: single-node
+node.name: "es-test-master"
+network.host: 0.0.0.0
+discovery.seed_hosts : 127.0.0.1
