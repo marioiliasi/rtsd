@@ -5,7 +5,7 @@ docker pull voltdb/voltdb-community
 docker stop volt-test-master || true
 docker rm volt-test-master || true
 
-#docker network create -d bridge voltLocalCluster
+docker network create -d bridge voltLocalCluster
 
 docker run -d -P \
 	-e HOST_COUNT=1 -e HOSTS=volt-test-master \

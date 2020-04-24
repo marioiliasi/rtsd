@@ -1,0 +1,47 @@
+# This has to be writen in voltDB GUI in the SQLQuery section.
+# It will create procedures in the DB that will be called by name from the Python code.
+# All names hare must be the same as in Constants.py
+
+##############################################################################
+#Users Table and Procedures
+CREATE TABLE User (
+   id INTEGER NOT NULL,
+   first_name VARCHAR(64),
+   last_name VARCHAR(64),
+   age INTEGER,
+   PRIMARY KEY (id)
+);
+
+PARTITION TABLE User ON COLUMN id;
+
+CREATE PROCEDURE InsertIntoUser PARTITION ON TABLE User COLUMN id
+   AS INSERT INTO User (id, first_name, last_name, age) VALUES (?, ?, ?, ?);
+
+CREATE PROCEDURE DeleteFromUserById PARTITION ON TABLE User COLUMN id
+   AS DELETE FROM User WHERE id = ?;
+
+CREATE PROCEDURE DeleteAllFromUser
+   AS DELETE FROM User;
+
+##############################################################################
+
+#Activity Table and Procedures
+CREATE TABLE Activity (
+    id INTEGER NOT NULL,
+    user_id INTEGER NOT NULL,
+    category VARCHAR(64),
+    description VARCHAR(64),
+    PRIMARY KEY (id)
+);
+
+PARTITION TABLE Activity ON COLUMN id;
+
+CREATE PROCEDURE InsertIntoActivity PARTITION ON TABLE Activity COLUMN id
+   AS INSERT INTO Activity (id, user_id, category, description) VALUES (?, ?, ?, ?);
+
+CREATE PROCEDURE DeleteFromActivityById PARTITION ON TABLE Activity COLUMN id
+   AS DELETE FROM Activity WHERE id = ?;
+
+CREATE PROCEDURE DeleteAllFromActivity
+   AS DELETE FROM Activity;
+##############################################################################
