@@ -13,9 +13,17 @@ const func = {
   generateRandomUser: function(){
     let user = {};
 
-    user["firstName"] = uuid();
+    user["givenName"] = uuid();
     user["lastName"] = uuid();
-    user["age"] = Math.ceil(Math.random() * 100);
+    user["middleName"] = uuid();
+    user["identifier"] = uuid();
+    user["primaryLanguage"] = uuid();
+    user["role"] = uuid();
+    user["sms"] = uuid();
+    user["phone"] = uuid();
+    user["email"] = uuid();
+    user["grades"] = [Math.floor(Math.random() * 10)];
+    user["timestampLastModifiedInMilliseconds"] = new Date().getTime();
 
     return user;
   }

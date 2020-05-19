@@ -30,29 +30,25 @@ module.exports ={
   search: async (index, query) => {
     const { body } = await client.search({
       index: index,
-      body: {
-        query: query
-      }
+      body: query
     })
 
     return body;
   },
 
-  updateByQuery: async (index, script, query) => {
+  updateByQuery: async (index, body) => {
     return await client.updateByQuery({
       index: index,
       refresh: true,
-      body: {
-        script: script,
-        query : query
-      }
-    })
+      body: body
+    });
   },
 
   deleteByQuery: async (index, query) => {
     return await client.deleteByQuery({
       index: index,
-      body: {query}
+      body: {query},
+      scroll_size: 10000
     });
   },
 

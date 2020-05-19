@@ -1,0 +1,19 @@
+Inserted 100 users in 98 ms
+Updated all users in 64 ms
+Get all users in 2 ms
+Deleted all users in 19 ms
+
+Inserted 1000 users in 284 ms
+Updated all users in 176 ms
+Get all users in 20 ms
+Deleted all users in 54 ms
+
+Inserted 10000 users in 1557 ms
+Updated all users in 1592 ms
+Get all users in 196 ms
+Deleted all users in 472 ms
+
+Inserted 50000 users in 6388 ms
+Updated all users in 8760 ms
+Get all users in 213 ms
+Deleted all users in 2771 ms

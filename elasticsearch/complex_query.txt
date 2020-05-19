@@ -1,0 +1,97 @@
+{
+  "query": {
+    "bool": {
+      "filter": [
+        {
+          "term": {
+            "role": "Student"
+          }
+        },
+        {
+          "term": {
+            "primaryLanguage": "Spanish"
+          }
+        },
+        {
+          "term": {
+            "gender": "Male"
+          }
+        },
+        {
+          "terms": {
+            "grades": [
+              "2,",
+              "3",
+              "4"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "aggs": {
+    "facets": {
+      "filter": {
+        "bool": {
+          "filter": [
+            {
+              "term": {
+                "role": "Student"
+              }
+            }
+          ]
+        }
+      },
+      "aggs": {
+        "gradeLevels": {
+          "terms": {
+            "field": "grades"
+          }
+        },
+        "genders": {
+          "terms": {
+            "field": "gender"
+          }
+        },
+        "primaryLanguages": {
+          "terms": {
+            "field": "language"
+          }
+        },
+        "schools": {
+          "nested": {
+            "path": "schools"
+          },
+          "aggs": {
+            "classes": {
+              "nested": {
+                "path": "schools.classes"
+              },
+              "aggs": {
+                "uuid": {
+                  "terms": {
+                    "script": "if(doc['schools.classes.name'].size() == 0) return ''; else return doc['schools.classes.name'].value + '////' + doc['schools.classes.uuid'].value;",
+                    "size": "10000",
+                    "order": {
+                      "_key": "asc"
+                    }
+                  }
+                },
+                "name": {
+                  "terms": {
+                    "field": "schools.classes.name",
+                    "size": "10000",
+                    "order": {
+                      "_key": "asc"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "size": "10000"
+}

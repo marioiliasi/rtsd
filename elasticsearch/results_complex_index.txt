@@ -1,0 +1,23 @@
+Inserted 100 users in 162 ms
+Updated all users in 163 ms
+Get all users in 3 ms
+Get filtered users in 5 ms
+Deleted all users in 16 ms
+
+Inserted 1000 users in 2684 ms
+Updated all users in 2995 ms
+Get all users in 26 ms
+Get filtered users in 126 ms
+Deleted all users in 67 ms
+
+Inserted 10000 users in 18983 ms
+Updated all users in 17071 ms
+Get all users in 253 ms
+Get filtered users in 263 ms
+Deleted all users in 783 ms
+
+Inserted 50000 users in 129312 ms
+Updated all users in 114507 ms
+Get all users in 450 ms
+Get all users (10000) filtered by in 363 ms x 5 = 1815 ms paginated
+Deleted all users in 805 ms * 5 = 4025 ms
